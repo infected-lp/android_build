@@ -1706,6 +1706,13 @@ otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 bacon: otapackage
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(candy5_TARGET_PACKAGE)
 	$(hide) $(MD5SUM) $(candy5_TARGET_PACKAGE) > $(candy5_TARGET_PACKAGE).md5sum
+ifeq ($(USE_PREBUILT_CHROMIUM),1)
+ifneq ($(PRODUCT_PREBUILT_WEBVIEWCHROMIUM),yes)
+	@echo "Running Chromium prebuilt setup script..."
+	$(hide) . $(TOPDIR)vendor/candy5/utils/chromium_prebuilt.sh $(TOP)
+endif
+endif
+	@echo -e ${CL_GRN}"Package Complete: $(CUSTOM_TARGET_PACKAGE)"${CL_RST}
 	@echo -e ${CL_YLW}"════════════════════════════════════════════════════════════════════════════════"${CL_RST}
 	@echo -e ${CL_BLU}"                   ██████╗ █████╗ ███╗   ██╗ ██████╗ ██╗   ██╗                  "${CL_RST}
 	@echo -e ${CL_BLU}"                  ██╔════╝██╔══██╗████╗  ██║ ██╔══██╗╚██╗ ██╔╝                  "${CL_RST}
