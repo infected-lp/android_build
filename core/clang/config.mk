@@ -45,8 +45,8 @@ CLANG_CONFIG_EXTRA_CFLAGS += \
   -O3 -Qunused-arguments -Wno-unknown-warning-option -D__compiler_offsetof=__builtin_offsetof
 else
 CLANG_CONFIG_EXTRA_CFLAGS += \
-  -D__compiler_offsetof=__builtin_offsetof
-
+  -Qunused-arguments -Wno-unknown-warning-option -D__compiler_offsetof=__builtin_offsetof
+endif
 # Help catch common 32/64-bit errors.
 CLANG_CONFIG_EXTRA_CFLAGS += \
   -Werror=int-conversion
@@ -117,3 +117,4 @@ ADDRESS_SANITIZER_CONFIG_EXTRA_STATIC_LIBRARIES := libasan
 # This allows us to use the superset of functionality that compiler-rt
 # provides to Clang (for supporting features like -ftrapv).
 COMPILER_RT_CONFIG_EXTRA_STATIC_LIBRARIES := libcompiler_rt-extras
+endif
