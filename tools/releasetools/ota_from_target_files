@@ -595,7 +595,7 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
     system_progress -= 0.1
   if HasVendorPartition(input_zip):
     system_progress -= 0.1
-    
+
 
   script.Print("*******************************************");
   script.Print("*******************************************");
@@ -604,7 +604,6 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   script.Print("| (__/ _` | ' \/ _` | || |   / _ \ '  \(_-<");
   script.Print(" \___\__,_|_||_\__,_|\_, |_|_\___/_|_|_/__/");
   script.Print("                     |__/                  ");
-  script.Print("*******************************************");
   script.Print("*******************************************");
 
   build = GetBuildProp("ro.build.date", OPTIONS.info_dict)
@@ -616,10 +615,6 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   script.Print("*   Device: %s (%s)"%(model, device));
   script.Print("*******************************************");
   script.Print("*******************************************");
-
-  if block_based:
-    common.ZipWriteStr(output_zip, "system/bin/otasigcheck.sh",
-                   ""+input_zip.read("SYSTEM/bin/otasigcheck.sh"))
 
   script.AppendExtra("if is_mounted(\"/data\") then")
   script.ValidateSignatures("data")
@@ -636,7 +631,6 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
 
   system_items = ItemSet("system", "META/filesystem_config.txt")
   script.ShowProgress(system_progress, 0)
-
   if block_based:
     # Full OTA is done as an "incremental" against an empty source
     # image.  This has the effect of writing new data from the package
@@ -663,8 +657,8 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
       common.ZipWriteStr(output_zip, "recovery/" + fn, data)
       system_items.Get("system/" + fn, dir=False)
 
-    common.MakeRecoveryPatch(OPTIONS.input_tmp, output_sink,
-                             recovery_img, boot_img)
+#    common.MakeRecoveryPatch(OPTIONS.input_tmp, output_sink,
+#                             recovery_img, boot_img)
 
     system_items.GetMetadata(input_zip)
     system_items.Get("system").SetPermissions(script)
@@ -942,11 +936,6 @@ set_stage("%(bcb_dev)s", "2/3");
 reboot_now("%(bcb_dev)s", "");
 else
 """ % bcb_dev)
-
-  # Verify the existing partitions.
-  system_diff.WriteVerifyScript(script)
-  if vendor_diff:
-    vendor_diff.WriteVerifyScript(script)
 
   script.Comment("---- start making changes here ----")
 
