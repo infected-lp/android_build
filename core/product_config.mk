@@ -181,7 +181,7 @@ include $(BUILD_SYSTEM)/device.mk
 
 # A CM build needs only the CM product makefiles.
 ifneq ($(candy5_BUILD),)
-  all_product_configs := $(shell ls device/*/$(candy5_BUILD)/candy5.mk)
+  all_product_configs := $(shell find device -path "*/$(candy5_BUILD)/candy5.mk")
 else
   ifneq ($(strip $(TARGET_BUILD_APPS)),)
   # An unbundled app build needs only the core product makefiles.
