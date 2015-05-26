@@ -87,3 +87,8 @@ $(info   CYNGN_FEATURES=$(CYNGN_FEATURES))
 endif
 $(info ============================================)
 endif
+
+ifdef SM_VENDOR
+  # Include sabermod dumpvar
+  include $(SM_VENDOR)/build/dumpvar.mk
+endif
