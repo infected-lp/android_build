@@ -77,6 +77,7 @@ $(combo_2nd_arch_prefix)TARGET_arm_CFLAGS :=    $(CANDY_ARM_OPT_LEVEL) \
 # Modules can choose to compile some source as thumb.
 $(combo_2nd_arch_prefix)TARGET_thumb_CFLAGS :=  -mthumb \
                         $(CANDY_THUMB_OPT_LEVEL) \
+                        -Wno-error=array-bounds \
                         -fomit-frame-pointer \
                         -fno-strict-aliasing \
                         $(CANDY_FSTRICT_OPTIONS) \
