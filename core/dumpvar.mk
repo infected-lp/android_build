@@ -94,8 +94,3 @@ ifdef SM_VENDOR
   include $(SM_VENDOR)/build/dumpvar.mk
 endif
 endif
-
-ifdef SM_VENDOR
-  # Include sabermod dumpvar
-  include $(SM_VENDOR)/build/dumpvar.mk
-endif
