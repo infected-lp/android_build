@@ -1716,18 +1716,19 @@ ifneq ($(PRODUCT_PREBUILT_WEBVIEWCHROMIUM),yes)
 	$(hide) . $(TOPDIR)vendor/candy5/utils/chromium_prebuilt.sh $(TOP)
 endif
 endif
-	@echo -e ${CL_GRN}"Package Complete: $(CUSTOM_TARGET_PACKAGE)"${CL_RST}
-	@echo -e ${CL_YLW}"════════════════════════════════════════════════════════════════════════════════"${CL_RST}
-	@echo -e ${CL_BLU}"                   ██████╗ █████╗ ███╗   ██╗ ██████╗ ██╗   ██╗                  "${CL_RST}
-	@echo -e ${CL_BLU}"                  ██╔════╝██╔══██╗████╗  ██║ ██╔══██╗╚██╗ ██╔╝                  "${CL_RST}
-	@echo -e ${CL_BLU}"                  ██║     ███████║██╔██╗ ██║ ██║  ██║  ╚██╔╝╝                   "${CL_RST}
-	@echo -e ${CL_BLU}"                  ██║     ██╔══██║██║╚██╗██║ ██║  ██║   ██║                     "${CL_RST}
-	@echo -e ${CL_BLU}"                  ╚██████╗██║  ██║██║ ╚████║ ██████║║   ██║                     "${CL_RST}
-	@echo -e ${CL_BLU}"                   ╚═════╝╚═╝  ╚═╝╚═╝  ╚═══╝  ╚═════╝   ╚═╝                     "${CL_RST}
-	@echo -e ${CL_YLW}"════════════════════════════════════════════════════════════════════════════════"${CL_RST}
-	@echo -e ${CL_CYN}"Package zip: "${CL_MAG} $(candy5_TARGET_PACKAGE)${CL_RST}
-	@echo -e ${CL_YLW}"════════════════════════════════════════════════════════════════════════════════"${CL_RST}
-
+	@echo -e ${CL_BLU}"═════════════════════════════════════════════════════════════════════════════════"${CL_RST}
+	@echo -e ${CL_BLU}"═════════════════════════════════════════════════════════════════════════════════"${CL_RST}
+	@echo -e ${CL_RED}"                  ▄████▄   ▄▄▄       ███▄    █ ▓█████▄ ▓██   ██▓                 "${CL_RST}
+	@echo -e ${CL_RED}"                 ▒██▀ ▀█  ▒████▄     ██ ▀█   █ ▒██▀ ██▌ ▒██  ██▒	 	    "${CL_RST}
+	@echo -e ${CL_RED}"                 ▒▓█    ▄ ▒██  ▀█▄  ▓██  ▀█ ██▒░██   █▌  ▒██ ██░		    "${CL_RST}
+	@echo -e ${CL_RED}"                 ▒▓▓▄ ▄██▒░██▄▄▄▄██ ▓██▒  ▐▌██▒░▓█▄   ▌  ░ ▐██▓░		    "${CL_RST}
+	@echo -e ${CL_RED}"                 ▒ ▓███▀ ░ ▓█   ▓██▒▒██░   ▓██░░▒████▓   ░ ██▒▓░		    "${CL_RST}
+	@echo -e ${CL_RED}"                 ░ ░▒ ▒  ░ ▒▒   ▓▒█░░ ▒░   ▒ ▒  ▒▒▓  ▒    ██▒▒▒ 		    "${CL_RST}
+	@echo -e ${CL_RED}"                   ░  ▒     ▒   ▒▒ ░░ ░░   ░ ▒░ ░ ▒  ▒  ▓██ ░▒░ 		    "${CL_RST}
+	@echo -e ${CL_RED}"                 ░          ░   ▒      ░   ░ ░  ░ ░  ░  ▒ ▒ ░░  		    "${CL_RST}
+	@echo -e ${CL_BLU}"═════════════════════════════════════════════════════════════════════════════════"${CL_RST}
+	@echo -e ${CL_BLU}"═════════════════════════════════════════════════════════════════════════════════"${CL_RST}
+	@echo -e ${CL_GRN}"Package zip: "${CL_MAG} $(candy5_TARGET_PACKAGE)${CL_RST}
 endif    # recovery_fstab is defined
 endif    # TARGET_NO_KERNEL != true
 endif    # TARGET_DEVICE != generic*
