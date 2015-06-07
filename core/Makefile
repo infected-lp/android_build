@@ -1729,6 +1729,7 @@ endif
 	@echo -e ${CL_BLU}"═════════════════════════════════════════════════════════════════════════════════"${CL_RST}
 	@echo -e ${CL_BLU}"═════════════════════════════════════════════════════════════════════════════════"${CL_RST}
 	@echo -e ${CL_GRN}"Package zip: "${CL_MAG} $(candy5_TARGET_PACKAGE)${CL_RST}
+	$(hide) ./vendor/candy5/tools/otaxml
 endif    # recovery_fstab is defined
 endif    # TARGET_NO_KERNEL != true
 endif    # TARGET_DEVICE != generic*
