@@ -2596,20 +2596,6 @@ function pez {
     return $retval
 }
 
-function chromium_prebuilt() {
-    T=$(gettop)
-    export TARGET_DEVICE=$(get_build_var TARGET_DEVICE)
-    hash=$T/prebuilts/chromium/$TARGET_DEVICE/hash.txt
-
-    if [ -r $hash ] && [ $(git --git-dir=$T/external/chromium_org/.git --work-tree=$T/external/chromium_org rev-parse --verify HEAD) == $(cat $hash) ]; then
-        export PRODUCT_PREBUILT_WEBVIEWCHROMIUM=yes
-        echo "** Prebuilt Chromium is up-to-date; Will be used for build **"
-    else
-        export PRODUCT_PREBUILT_WEBVIEWCHROMIUM=no
-        echo "** Prebuilt Chromium out-of-date/not found; Will build from source **"
-    fi
-}
-
 function get_make_command()
 {
   echo command make
@@ -2647,23 +2633,26 @@ function chromium_prebuilt() {
     T=$(gettop)
     export TARGET_DEVICE=$(get_build_var TARGET_DEVICE)
     hash=$T/prebuilts/chromium/$TARGET_DEVICE/hash.txt
- 		 
-    if [ -r $hash ] && [ $(git --git-dir=$T/external/chromium_org/.git --work-tree=$T/external/chromium_org rev-parse --verify HEAD) == $(cat $hash) ]; then
+    libsCheck=$T/prebuilts/chromium/$TARGET_DEVICE/lib/libwebviewchromium.so
+    appCheck=$T/prebuilts/chromium/$TARGET_DEVICE/app/webview
+    device_target=$T/prebuilts/chromium/$TARGET_DEVICE/
+
+    if [ -r $hash ] && [ $(git --git-dir=$T/external/chromium_org/.git --work-tree=$T/external/chromium_org rev-parse --verify HEAD) == $(cat $hash) ] && [ -f $libsCheck ] && [ -d $appCheck ]; then
         export PRODUCT_PREBUILT_WEBVIEWCHROMIUM=yes
-        echo "** Prebuilt Chromium is up-to-date; Will be used for build **"
+        echo -e "\e[0;32m** Prebuilt Chromium is up-to-date; Will be used for build **\e[00m"
     else
         export PRODUCT_PREBUILT_WEBVIEWCHROMIUM=no
-        echo "** Prebuilt Chromium out-of-date/not found; Will build from source **"
+        rm -rfv $device_target
+        echo ""
+        echo -e "\e[0;31m** Prebuilt Chromium out-of-date/not found; Will build from source **\e[00m"
+        echo ""
     fi
 }
-
 
 function make()
 {
     mk_timer $(get_make_command) "$@"
 }
-
-
 
 if [ "x$SHELL" != "x/bin/bash" ]; then
     case `ps -o command -p $$` in
