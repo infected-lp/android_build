@@ -1,0 +1,27 @@
+Tracked Repos:
+
+https://github.com/CandyRoms/bionic
+
+https://github.com/CandyRoms/build
+
+https://github.com/CandyRoms/candy
+
+https://github.com/CandyRoms/frameworks_av
+
+https://github.com/CandyRoms/frameworks_base
+
+https://github.com/CandyRoms/frameworks_opt_telephony
+
+https://github.com/CandyRoms/hardware_qcom_audio
+
+https://github.com/CandyRoms/hardware_qcom_display
+
+https://github.com/CandyRoms/libcore
+
+https://github.com/CandyRoms/packages_apps_CandyOTA
+
+https://github.com/CandyRoms/packages_apps_Settings
+
+https://github.com/CandyRoms/vendor_candy
+
+
