@@ -189,6 +189,15 @@ ifneq ($(filter %64,$(TARGET_ARCH)),)
 TARGET_IS_64_BIT := true
 endif
 
+# Lib For Webview
+ifeq ($(TARGET_IS_64_BIT),true)
+PRODUCT_COPY_FILES += \
+	vendor/candy5/prebuilt/lib64/arm64-v8a/libbypass.so:system/lib64/libbypass.so
+else
+PRODUCT_COPY_FILES += \
+	vendor/candy5/prebuilt/lib/armeabi-v7a/libbypass.so:system/lib/libbypass.so
+endif
+
 # the target build type defaults to release
 ifneq ($(TARGET_BUILD_TYPE),debug)
 TARGET_BUILD_TYPE := release
