@@ -6,6 +6,8 @@ ARCH_ARM_HAVE_VFP               := true
 ARCH_ARM_HAVE_VFP_D32           := true
 ARCH_ARM_HAVE_NEON              := true
 
+# If you're using toolchains that handle cortex and neon flags by default, set this to true.
+ifneq ($(strip $(USE_GCC_DEFAULTS)),true)
 CORTEX_A15_TYPE := \
 	cortex-a15 \
 	krait \
