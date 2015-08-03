@@ -34,6 +34,7 @@ endif
 endif
 endif
 endif
+endif
 
 # arm64 doesn't like cortex-a15 in the kernel
 ifeq (denver,$(TARGET_$(combo_2nd_arch_prefix)CPU_VARIANT))
